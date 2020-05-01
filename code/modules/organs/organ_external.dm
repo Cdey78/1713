@@ -873,7 +873,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		W.germ_level = FALSE
 	return rval
 
-/obj/item/organ/external/proc/clamp()
+/obj/item/organ/external/proc/surgeryclamp()
 	var/rval = FALSE
 	status &= ~ORGAN_BLEEDING
 	for (var/datum/wound/W in wounds)
@@ -1232,7 +1232,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	amputation_point = "neck"
 //	gendered_icon = TRUE
 	encased = "skull"
-	var/list/teeth_list() = list()
+	var/list/teeth_list = list()
 	var/max_teeth = 32
 
 /obj/item/organ/external/head/removed()
