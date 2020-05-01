@@ -125,6 +125,7 @@
 				new path(H.l_hand)
 
 	update_character(H)
+	H:regenerate_icons()
 
 	return TRUE
 
