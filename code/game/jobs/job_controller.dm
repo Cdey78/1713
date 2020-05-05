@@ -373,6 +373,7 @@ var/global/datum/controller/occupations/job_master
 			H.stopDumbDamage = FALSE
 
 		H.memory()
+		H:regenerate_icons() //temp fix
 
 		return H
 

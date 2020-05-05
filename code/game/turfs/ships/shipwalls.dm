@@ -35,6 +35,7 @@
 	desc = "A wooden ship wall."
 	icon = 'icons/turf/boat_b.dmi'
 	icon_state = "boat_b1"
+	opacity = 1
 
 /obj/structure/barricade/ship/blue/b1
 	name = "wall"

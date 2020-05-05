@@ -7,19 +7,19 @@
 	var/list/top_ladders = list()
 	var/list/bottom_ladders = list()
 
-	for (var/obj/structure/multiz/ladder/ww2/ladder in ladder_list)
+	for (var/obj/structure/multiz/ladder/ladder in ladder_list)
 		if (ladder.istop)
-			if (!top_ladders[ladder.area_id])
-				top_ladders[ladder.area_id] = 0
-			++top_ladders[ladder.area_id]
-			ladder.ladder_id = "ww2-l-[ladder.area_id]-[top_ladders[ladder.area_id]]"
+			if (!top_ladders[ladder.loc])
+				top_ladders[ladder.loc] = 0
+			++top_ladders[ladder]
+			ladder.ladder_id = "[ladder.loc]-[top_ladders[ladder.loc]]"
 		else
-			if (!bottom_ladders[ladder.area_id])
-				bottom_ladders[ladder.area_id] = 0
-			++bottom_ladders[ladder.area_id]
-			ladder.ladder_id = "ww2-l-[ladder.area_id]-[bottom_ladders[ladder.area_id]]"
+			if (!bottom_ladders[ladder.loc])
+				bottom_ladders[ladder.loc] = 0
+			++bottom_ladders[ladder.loc]
+			ladder.ladder_id = "[ladder.loc]-[bottom_ladders[ladder.loc]]"
 
-	for (var/obj/structure/multiz/ladder/ww2/ladder in ladder_list)
+	for (var/obj/structure/multiz/ladder in ladder_list)
 		ladder.target = ladder.find_target()
 	return TRUE
 
@@ -48,10 +48,8 @@
 		return
 
 	initialize()
+		world << "FINDING TARGET"
 		find_target()
-/*
-	attack_tk(mob/user)
-		return*/
 
 	attack_ghost(mob/user)
 		. = ..()
@@ -72,6 +70,8 @@
 	icon_state = "ladderdown"
 	layer = 2.99 // below crates
 
+	var/ladder_id
+
 /obj/structure/multiz/ladder/New()
 	..()
 	ladder_list += src
@@ -82,7 +82,7 @@
 
 /obj/structure/multiz/ladder/find_target()
 	var/turf/targetTurf = istop ? GetBelow(src) : GetAbove(src)
-	target = locate(/obj/structure/multiz/ladder) in targetTurf
+	return target = locate(/obj/structure/multiz/ladder) in targetTurf
 
 /obj/structure/multiz/ladder/up
 	icon_state = "ladderup"
@@ -94,22 +94,17 @@
 	return ..()
 
 /obj/structure/multiz/ladder/attack_hand(var/mob/M)
+	M << "Your area: [get_area(M)]"
+	M << "[istop ? "finding below tile at [GetBelow(src)]" : "finding above tile at [GetAbove(src)]"]"
 
 	if (M.restrained())
 		M << "<span class='warning'>You can't use /the [src] while you're restrained.</span>"
 		return
 
 	if (!target || !istype(target.loc, /turf))
-		if (!istype(src, /obj/structure/multiz/ladder/ww2/tunneltop) && (!istype(src, /obj/structure/multiz/ladder/ww2/tunnelbottom)))
-			M << "<span class='notice'>\The [src] is incomplete and can't be climbed.</span>"
-			return
-		else
-			if (istype(src, /obj/structure/multiz/ladder/ww2/tunneltop))
-				M.z = M.z-1
-				return
-			if (istype(src, /obj/structure/multiz/ladder/ww2/tunnelbottom))
-				M.z = M.z+1
-				return
+		M << "TARGET = [target], at [target.loc]."
+		M << "<span class='notice'>\The [src] is incomplete and can't be climbed.</span>"
+		return
 
 	var/turf/T = target.loc
 	if (!istop)
@@ -220,50 +215,14 @@
 		return "up"
 	return "down"
 
-/* 1 Z LEVEL LADDERS - Kachnov */
-
-/obj/structure/multiz/ladder/ww2
-	var/ladder_id = null
-	var/area_id = "defaultareaid"
-
-/obj/structure/multiz/ladder/ww2/Crossed(var/atom/movable/AM)
-	if (find_target() && istop)
-		if (!AM.pulledby && isitem(AM) && !istype(AM, /obj/item/projectile))
-			var/obj/item/I = AM
-			if (I.w_class <= 2.0) // fixes maxim bug and probably some others - Kachnov
-				I.forceMove(get_turf(find_target()))
-				visible_message("\The [I] falls down the ladder.")
-		else if (!AM.pulledby && istype(AM, /obj/structure/closet))
-			visible_message("\The [AM] falls down the ladder.")
-			AM.forceMove(get_turf(find_target()))
-
-/obj/structure/multiz/ladder/ww2/find_target()
-	for (var/obj/structure/multiz/ladder/ww2/ladder in ladder_list)
-		if (ladder_id == ladder.ladder_id && ladder != src)
-			return ladder
-
-/obj/structure/multiz/ladder/ww2/ex_act(severity)
-	return
-
-/obj/structure/multiz/ladder/ww2/up
-	icon_state = "ladderup"
-	istop = FALSE
-
-/obj/structure/multiz/ladder/ww2/Destroy()
-	if (target && istop)
-		qdel(target)
-	return ..()
-
-/obj/structure/multiz/ladder/ww2/tunneltop
-	name = "tunnel entrance"
-	desc = "A hole dug in the floor, leads to an underground tunnel."
-	icon_state = "hole_top"
-
-/obj/structure/multiz/ladder/ww2/tunnelbottom
-	name = "tunnel exit"
-	desc = "A makeshift stairway, leads to the surface."
-	icon_state = "hole_bottom"
-	istop = FALSE
+/obj/structure/multiz/ladder/autotop/New()
+	var/turf/T = GetBelow(src)
+	var/obj/structure/multiz/ladder/newthing = new /obj/structure/multiz/ladder/up
+	newthing.loc = locate(T)
+	if(!newthing.loc)
+		qdel(src)
+		world << "span class=danger'ERROR: Ladder led to null location.</span>"
+	. = ..()
 
 /obj/structure/multiz/stairs
 	name = "Stairs"

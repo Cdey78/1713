@@ -56,9 +56,9 @@
 
 		if (!isliving(mover))
 			if (istype(below, /turf/open))
-				mover.visible_message("\The [mover] falls from the deck above through \the [below]!", "You hear a whoosh of displaced air.")
+				mover.visible_message("\The [mover] falls from above through \the [below]!", "You hear a whoosh.")
 			else
-				mover.visible_message("\The [mover] falls from the deck above and slams into \the [below]!", "You hear something slam into the deck.")
+				mover.visible_message("\The [mover] falls from above and slams into \the [below]!", "You hear something slam into the ground.")
 		else
 			var/mob/M = mover
 			if (istype(below, /turf/open))

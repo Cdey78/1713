@@ -93,7 +93,7 @@
 		return
 
 	// stop looking down a ladder
-	if (istype(A, /obj/structure/multiz/ladder/ww2))
+	if (istype(A, /obj/structure/multiz/ladder))
 		var/mob/living/carbon/human/H = src
 		if (istype(H) && H.laddervision)
 			H.update_laddervision(null)

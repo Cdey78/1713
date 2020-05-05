@@ -124,12 +124,11 @@
 			else if (istype(H.l_hand, /obj/item/weapon/storage))
 				new path(H.l_hand)
 
-	update_character(H)
-	H:regenerate_icons()
 
 	return TRUE
 
 /datum/job/proc/update_character(var/mob/living/carbon/human/H)
+	H:regenerate_icons()
 	return TRUE
 
 /datum/job/proc/get_access()

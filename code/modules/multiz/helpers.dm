@@ -25,6 +25,7 @@ proc/HasBelow(var/z)
 proc/GetAbove(var/atom/atom, var/obj/lift_controller/optional_lift_master)
 
 	var/area/area = get_area(atom)
+	world << "AREA == [area]"
 	var/area_lift_master = area.lift_master()
 	if (!area_lift_master)
 		var/turf/turf = get_turf(atom)
