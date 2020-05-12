@@ -59,12 +59,13 @@
 		return
 	hardness = max(1,round(material.integrity/10))
 	icon_state = material.door_icon_base
-	name = "[material.display_name] door"
-	color = material.icon_colour
-	if (material.opacity < 0.5)
-		opacity = FALSE
-	else
-		opacity = TRUE
+	if(!override_material_state)
+		name = "[material.display_name] door"
+		color = material.icon_colour
+		if (material.opacity < 0.5)
+			opacity = FALSE
+		else
+			opacity = TRUE
 	if (material.products_need_process())
 		processing_objects |= src
 	update_nearby_tiles(need_rebuild=1)

@@ -301,6 +301,7 @@
 #include "code\game\objects\structures\key_doors\key_door.dm"
 #include "code\game\objects\structures\key_doors\keychain.dm"
 #include "code\game\objects\structures\key_doors\keyslot.dm"
+#include "code\game\objects\structures\key_doors\wooden.dm"
 #include "code\game\objects\structures\key_doors\types\groups.dm"
 #include "code\game\objects\structures\key_doors\types\groups_unaligned.dm"
 #include "code\game\objects\structures\kitchen\oven.dm"
@@ -753,5 +754,5 @@
 #include "interface\bugs&suggs.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
-#include "maps\colony.dmm"
+#include "maps\Colony V2.dmm"
 // END_INCLUDE

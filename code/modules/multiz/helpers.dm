@@ -24,14 +24,14 @@ proc/HasBelow(var/z)
 // Thankfully, no bitwise magic is needed here.
 proc/GetAbove(var/atom/atom, var/obj/lift_controller/optional_lift_master)
 
-	var/area/area = get_area(atom)
-	world << "AREA == [area]"
-	var/area_lift_master = area.lift_master()
+	var/area/thearea = get_area(atom)
+	var/area_lift_master = thearea.lift_master()
 	if (!area_lift_master)
 		var/turf/turf = get_turf(atom)
-		if (!turf)
+		if(!turf)
+			world << "No turf"
 			return null
-		return HasAbove(turf.z) ? get_step(turf, UP) : null
+		return get_step(turf, UP)
 	else
 		var/obj/lift_controller/lift = optional_lift_master
 
@@ -58,7 +58,7 @@ proc/GetBelow(var/atom/atom, var/obj/lift_controller/optional_lift_master)
 		if (!turf)
 			world << "No turf"
 			return null
-		return HasBelow(turf.z) ? get_step(turf, DOWN) : null
+		return get_step(turf, DOWN)
 	else
 		var/obj/lift_controller/lift = optional_lift_master
 

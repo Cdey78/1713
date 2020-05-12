@@ -20,8 +20,8 @@
 
 /datum/job/civilian/governor
 	title = "Governor"
-	en_meaning = "Colony Leader"
-	rank_abbreviation = "Governo"
+	en_meaning = "Colony Governor"
+	rank_abbreviation = "Governor"
 	head_position = TRUE
 	selection_color = "#2d2d63"
 	spawn_location = "JoinLateCiv"
@@ -39,9 +39,9 @@
 //shoes
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/leatherboots1(H), slot_shoes)
 //clothes
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/civ4(H), slot_w_uniform)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/governor(H), slot_w_uniform)
 //jacket
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/piratejacket5(H), slot_wear_suit)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/governor(H), slot_wear_suit)
 //head
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/powdered_wig(H), slot_head)
 
@@ -61,15 +61,16 @@
 	H.setStat("bows", STAT_NORMAL)
 	H.setStat("medical", STAT_MEDIUM_LOW)
 
+	H.update_hud()
 
 	return TRUE
 
 
 
 /datum/job/civilian/veteran
-	title = "Veteran"
-	en_meaning = "Colony Security"
-	rank_abbreviation = ""
+	title = "Redcoat"
+	en_meaning = "Colony protection"
+	rank_abbreviation = "redcoat"
 	selection_color = "#2d2d63"
 	spawn_location = "JoinLateCiv"
 	SL_check_independent = TRUE
@@ -84,7 +85,7 @@
 //shoes
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/blackboots1(H), slot_shoes)
 //clothes
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/civ2(H), slot_w_uniform)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/civ(H), slot_w_uniform)
 //jacket
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/british_soldier(H), slot_wear_suit)
 
@@ -96,7 +97,7 @@
 	H.equip_to_slot_or_del(new/obj/item/stack/money/real(H), slot_l_store)
 	H.equip_to_slot_or_del(new /obj/item/weapon/key/civ/hall(H), slot_r_store)
 
-	H.add_note("Role", "You are a <b>[title]</b> of past wars. Your job is to organize the colony defense and hunting parties.")
+	H.add_note("Role", "You are a <b>[title]</b> of the british army, sent to aid the governor in keeping the peace.")
 	H.setStat("strength", STAT_MEDIUM_HIGH)
 	H.setStat("crafting", STAT_MEDIUM_LOW)
 	H.setStat("rifle", STAT_MEDIUM_HIGH)
@@ -136,7 +137,7 @@
 		if (randcloth == 1)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ1(H), slot_w_uniform)
 		else if (randcloth == 2)
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ2(H), slot_w_uniform)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ(H), slot_w_uniform)
 		else if (randcloth == 3)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ3(H), slot_w_uniform)
 		else if (randcloth == 4)
@@ -195,7 +196,7 @@
 		if (randcloth == 1)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ1(H), slot_w_uniform)
 		else if (randcloth == 2)
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ2(H), slot_w_uniform)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ(H), slot_w_uniform)
 		else if (randcloth == 3)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ3(H), slot_w_uniform)
 		else if (randcloth == 4)
@@ -253,7 +254,7 @@
 		if (randcloth == 1)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ1(H), slot_w_uniform)
 		else if (randcloth == 2)
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ2(H), slot_w_uniform)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ(H), slot_w_uniform)
 		else if (randcloth == 3)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ3(H), slot_w_uniform)
 		else if (randcloth == 4)
@@ -310,7 +311,7 @@
 		if (randcloth == 1)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ1(H), slot_w_uniform)
 		else if (randcloth == 2)
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ2(H), slot_w_uniform)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ(H), slot_w_uniform)
 		else if (randcloth == 3)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ3(H), slot_w_uniform)
 		else if (randcloth == 4)
@@ -368,7 +369,7 @@
 		if (randcloth == 1)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ1(H), slot_w_uniform)
 		else if (randcloth == 2)
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ2(H), slot_w_uniform)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ(H), slot_w_uniform)
 		else if (randcloth == 3)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ3(H), slot_w_uniform)
 		else if (randcloth == 4)
@@ -441,7 +442,7 @@
 		if (randcloth == 1)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ1(H), slot_w_uniform)
 		else if (randcloth == 2)
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ2(H), slot_w_uniform)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ(H), slot_w_uniform)
 		else if (randcloth == 3)
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/civ3(H), slot_w_uniform)
 		else if (randcloth == 4)

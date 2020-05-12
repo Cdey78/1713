@@ -133,21 +133,21 @@
 	icon = 'icons/turf/boat_b.dmi'
 	icon_state = "boat_b19"
 
-/obj/structure/barricade/ship/blue/bport0
+/obj/structure/barricade/ship/blue/beast/bport0
 	name = "wall"
 	desc = "A wooden ship wall."
 	icon = 'icons/turf/boat_b.dmi'
 	icon_state = "boat_b_port0"
 	cover = 40
 
-/obj/structure/barricade/ship/blue/bport1
+/obj/structure/barricade/ship/blue/beast/bport1
 	name = "holed wall"
 	desc = "A thin wood ship wall, with a lower part to fire through."
 	icon = 'icons/turf/boat_b.dmi'
 	icon_state = "boat_b_port1"
 	cover = 25
 
-/obj/structure/barricade/ship/blue/bport3
+/obj/structure/barricade/ship/blue/beast/bport3
 	name = "crenelated wall"
 	desc = "A thin wood ship wall, with a lower part to fire through."
 	icon = 'icons/turf/boat_b.dmi'
@@ -155,13 +155,13 @@
 	cover = 20
 
 
-/obj/structure/barricade/ship/blue/bwest
+/obj/structure/barricade/ship/blue/beast/bwest
 	name = "wall"
 	desc = "A wooden ship wall."
 	icon = 'icons/turf/boat_b.dmi'
 	icon_state = "boat_b_west"
 
-/obj/structure/barricade/ship/blue/bwest2
+/obj/structure/barricade/ship/blue/beast/bwest2
 	name = "wall"
 	desc = "A wooden ship wall."
 	icon = 'icons/turf/boat_b.dmi'
@@ -172,8 +172,9 @@
 	desc = "A wooden ship wall."
 	icon = 'icons/turf/boat_b.dmi'
 	icon_state = "boat_b_east"
+	opacity = 0
 
-/obj/structure/barricade/ship/blue/beast2
+/obj/structure/barricade/ship/blue/beast/beast2
 	name = "wall"
 	desc = "A wooden ship wall."
 	icon = 'icons/turf/boat_b.dmi'

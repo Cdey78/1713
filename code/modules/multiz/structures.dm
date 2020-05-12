@@ -48,7 +48,6 @@
 		return
 
 	initialize()
-		world << "FINDING TARGET"
 		find_target()
 
 	attack_ghost(mob/user)
@@ -94,15 +93,12 @@
 	return ..()
 
 /obj/structure/multiz/ladder/attack_hand(var/mob/M)
-	M << "Your area: [get_area(M)]"
-	M << "[istop ? "finding below tile at [GetBelow(src)]" : "finding above tile at [GetAbove(src)]"]"
 
 	if (M.restrained())
 		M << "<span class='warning'>You can't use /the [src] while you're restrained.</span>"
 		return
 
 	if (!target || !istype(target.loc, /turf))
-		M << "TARGET = [target], at [target.loc]."
 		M << "<span class='notice'>\The [src] is incomplete and can't be climbed.</span>"
 		return
 

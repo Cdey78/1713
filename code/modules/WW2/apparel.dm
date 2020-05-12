@@ -23,12 +23,12 @@
 
 
 // civs
-/obj/item/clothing/under/civ4
-	name = "Fancy Colonial Clothing"
-	desc = "A set composed of a quality white linen shirt and black trousers."
-	icon_state = "civuni4"
-	item_state = "civuni4"
-	worn_state = "civuni4"
+/obj/item/clothing/under/governor
+	name = "fancy shirt and trousers"
+	desc = "A fancy set of clothes tailored for nobility!"
+	icon_state = "governor"
+	item_state = "governor"
+	worn_state = "civ1"
 
 /obj/item/clothing/under/civ1
 	name = "Blue Colonial Clothing"
@@ -37,9 +37,9 @@
 	item_state = "civuni1"
 	worn_state = "civuni1"
 
-/obj/item/clothing/under/civ2
-	name = "White Colonial Clothing"
-	desc = "A set composed of a white linen shirt and black trousers."
+/obj/item/clothing/under/civ
+	name = "shirt and trousers"
+	desc = "Your average shirt and trousers, drenched in hard colonial labor."
 	icon_state = "civuni2"
 	item_state = "civuni2"
 	worn_state = "civuni2"
@@ -160,11 +160,18 @@
 	worn_state = "piratejacket4"
 
 /obj/item/clothing/suit/storage/jacket/piratejacket5
-	name = "fancy jacket"
+	name = "fancy pirate jacket"
 	desc = "A fancy jacket. This one is red."
 	icon_state = "piratejacket5"
 	item_state = "piratejacket5"
 	worn_state = "piratejacket5"
+
+/obj/item/clothing/suit/storage/jacket/governor
+	name = "fancy jacket"
+	desc = "The fanciest jacket in the hemisphere! Surely you are blessed to be wearing such fine apparel."
+	icon_state = "governor"
+	item_state = "governor"
+	worn_state = "civ1"
 
 /obj/item/clothing/under/pirate1
 	name = "black stripes clothing"
@@ -271,7 +278,7 @@
 
 /obj/item/clothing/head/bicorne_british_soldier
 	name = "British Army bicorne"
-	desc = "A back bicorne, used by the British Army and Marines."
+	desc = "A black bicorne, used by the British Army and Marines."
 	icon_state = "tricorne_british_soldier"
 	item_state = "tricorne_british_soldier"
 
@@ -296,8 +303,8 @@
 	worn_state = "british_officer"
 
 /obj/item/clothing/suit/storage/jacket/british_soldier
-	name = "British soldier jacket"
-	desc = "The british redcoat, used by the British Army and Marines."
+	name = "redcoat jacket"
+	desc = "A redcoat's standard apparel, as none are complete without the signature red."
 	icon_state = "british_soldier_jacket"
 	item_state = "british_soldier_jacket"
 	worn_state = "british_soldier_jacket"
