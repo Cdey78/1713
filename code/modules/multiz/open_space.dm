@@ -1,4 +1,4 @@
-var/process/open_space/OS_controller = null
+//var/process/open_space/OS_controller = null
 
 /process/open_space
 	var/list/open_spaces = list()
@@ -6,8 +6,8 @@ var/process/open_space/OS_controller = null
 /process/open_space/setup()
 	name = "openspace"
 	schedule_interval = TRUE SECONDS // every second
-	start_delay = 12
-	OS_controller = src
+	start_delay = 5
+	processes.OS_controller = src
 
 /process/open_space/fire()
 	for (var/turf/open/T in open_spaces)
@@ -18,12 +18,15 @@ var/process/open_space/OS_controller = null
 
 /turf/open/New()
 	..()
-	if (OS_controller)
-		OS_controller.open_spaces += src
+	if (processes.OS_controller)
+		processes.OS_controller.open_spaces += src
+
+	spawn(5)
+		update_icon()
 
 /turf/open/Del()
-	if (OS_controller)
-		OS_controller.open_spaces -= src
+	if (processes.OS_controller)
+		processes.OS_controller.open_spaces -= src
 	..()
 
 /turf/open/update_icon()
@@ -36,8 +39,8 @@ var/process/open_space/OS_controller = null
 		icon_state = below.icon_state
 		dir = below.dir
 		color = below.color//rgb(127,127,127)
-	//	overlays += below.overlays // for some reason this turns an open
-	// space into plating.
+		overlays += below.overlays // for some reason this turns an open space into plating.
+		world << "[image(icon_state)] is the below turf"
 
 		if (!istype(below,/turf/open))
 			// get objects
@@ -50,6 +53,7 @@ var/process/open_space/OS_controller = null
 				temp2.color = o.color//rgb(127,127,127)
 				temp2.overlays += o.overlays
 				o_img += temp2
+				world << "temp 2 added to overlays; [image(temp2)]"
 			overlays += o_img
 
 		var/image/over_OS_darkness = image('icons/turf/floors.dmi', "black_open")

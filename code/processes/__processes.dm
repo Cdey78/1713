@@ -41,6 +41,7 @@ var/datum/process_list/processes = new
 	var/process/python/python = null
 	var/process/self_cleaning/self_cleaning = null
 	var/process/job_data/job_data = null
+	var/process/open_space/OS_controller = null
 
 	// recorded number of processes
 	var/next_get_num_processes = -1

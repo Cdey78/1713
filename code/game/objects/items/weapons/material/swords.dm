@@ -90,6 +90,12 @@
 	block_chance = 25
 	cooldownw = 6
 
+/obj/item/weapon/material/sword/smallsword/shortsword
+	name = "short sword"
+	desc = "A commoner's sword."
+	icon_state = "shortsword"
+	item_state = "smallsword"
+
 /obj/item/weapon/material/sword/spadroon
 	name = "spadroon"
 	desc = "A light sword with a straight blade. Common among the military."
